@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<meta charset="utf-8" />
+		<title>@ViewBag.Title</title>
+		
+	</head>
+	<body>
+		<header>
+		<img src="https://www.freepnglogos.com/uploads/logo-website-png/logo-website-website-logo-png-transparent-background-background-15.png" alt="Page Logo" height: auto; width=256px>
+		
+		@Html.ActionLink(
+            linkText: "About",
+            actionName: "About",
+            controllerName: "Home",
+            routeValues: null,
+            htmlAttributes: null)
+		@Html.ActionLink(
+            linkText: "Contact",
+            actionName: "Contact",
+            controllerName: "Home",
+            routeValues: new { Identity = 2577 },
+            htmlAttributes: null)
+		@Html.ActionLink(
+            linkText: "Projects",
+            actionName: "Projects",
+            controllerName: "Home",
+            routeValues: new { Identity = 2577 },
+            htmlAttributes: null)
+		@Html.ActionLink(
+            linkText: "Home",
+            actionName: "Index",
+            controllerName: "Home",
+            routeValues: new { Identity = 2577 },
+            htmlAttributes: null)
+	
+		</header>
+
+		<div class:"renderBodyDiv">
+			@RenderBody()
+		</div>
+
+		<footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Jonathan Jönsson Date : @DateTime.Now
+			
+		</div>
+		</footer>
+
+	</body>
+
+</html>
