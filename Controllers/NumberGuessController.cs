@@ -7,14 +7,14 @@ namespace WebDemo.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
         [HttpPost]
         public ActionResult GuessGame(GuessGameFormData form)
         {
             
             
-            return View("");
+            return View("Index");
         }
     }
 }

@@ -14,8 +14,9 @@ namespace WebDemo.Controllers
         public ActionResult FeverCheck(FeverCheckFormData form)
         {
             float temperatur = form.TemperaturData;
-            string s = WebDemo.Models.FeverCheckFormData.checkTemp(temperatur);
-            return View(s);
+            ViewBag.TemperaturData = WebDemo.Models.FeverCheckFormData.checkTemp(temperatur);
+            
+            return View("FeverCheck");
         }
     }
 }
