@@ -46,6 +46,9 @@ namespace WebDemo
                 endpoints.MapControllerRoute(
                     name: "doctor",
                     pattern: "{controller=Doctor}/{action=FeverCheck}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "number",
+                    pattern: "{controller=NumberGuessController}/{action=Index}/{id?}");
 
 
             });
