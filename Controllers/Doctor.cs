@@ -14,19 +14,8 @@ namespace WebDemo.Controllers
         public ActionResult FeverCheck(FeverCheckFormData form)
         {
             float temperatur = form.TemperaturData;
-            if (temperatur < 35.0)
-            {
-                ViewBag.FeberInteFeber = "För låg kroppstemperatur";
-            }
-            else if (temperatur > 38.0)
-            {
-                ViewBag.FeberInteFeber = "Du har feber";
-            }
-            else {
-                ViewBag.FeberInteFeber = "Du har normal kroppstemperatur";
-
-            }
-                return View("FeverCheck");
+            string s = WebDemo.Models.FeverCheckFormData.checkTemp(temperatur);
+            return View(s);
         }
     }
 }
