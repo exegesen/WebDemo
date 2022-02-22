@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "FeverCheck";
+}
+
+<head>  
+    <meta name="viewport" content="width=device-width" />  
+    <title>FeverCheck</title>
+</head>  
+<body>  
+     <p>Doctor</p>
+     @using(Html.BeginForm("FeverCheck","Doctor",FormMethod.Post))
+     {
+        <table>
+            <tr>
+                <td>Enter Temperature</td>
+                <td>@Html.TextBox("TemperaturData")</td>
+            </tr>
+            <tr>
+                <td colspan:"1"><input type="submit" "Submit">"</td>
+            </tr>
+
+        </table>
+        <h4 style="color:purple">
+            Temperatur: @ViewBag.TemperaturData
+            @ViewBag.FeberInteFeber
+
+        </h4>
+
+     }
+     //https://localhost:44365/Doctor/FeverCheck
+</body>  
+</html>
+

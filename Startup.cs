@@ -43,6 +43,10 @@ namespace WebDemo
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"
                     );
+                endpoints.MapControllerRoute(
+                    name: "doctor",
+                    pattern: "{controller=Doctor}/{action=FeverCheck}/{id?}");
+
 
             });
         }

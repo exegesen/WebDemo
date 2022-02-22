@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width" />
@@ -32,6 +32,12 @@
             linkText: "Home",
             actionName: "Index",
             controllerName: "Home",
+            routeValues: new { Identity = 2577 },
+            htmlAttributes: null)
+		@Html.ActionLink(
+            linkText: "FeverCheck",
+            actionName: "FeverCheck",
+            controllerName: "Doctor",
             routeValues: new { Identity = 2577 },
             htmlAttributes: null)
 	
