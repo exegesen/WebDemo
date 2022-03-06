@@ -13,7 +13,7 @@
 <body>  
     <div>  
     <h1>Number Guessing Game</h1>
-    @using(Html.BeginForm("GuessGame","NumberGuess",FormMethod.Post))
+    @using(Html.BeginForm("Index","NumberGuess",FormMethod.Post))
      {
         <table>
             <tr>
@@ -24,13 +24,13 @@
                 <td colspan:"1"><input type="submit" "Submit"></td>
             </tr>
 
-        </table>
-     }
+        </table> 
+     }  
         <h4 style="color:blue">
-            Number to guess: @Context.Session.GetInt32("_Number");
-            
-            
-
+        Guess is: @Context.Session.GetString("_GuessDisplay")
+        </h4>
+        <h4 style="color:blue">
+           DEBUG Number to guess: @Context.Session.GetInt32("_Number")
         </h4>
     </div>  
 </body>  
