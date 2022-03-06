@@ -3,7 +3,7 @@ using WebDemo.Models;
 
 namespace WebDemo.Controllers
 {
-    public class Doctor : Controller
+    public class DoctorController : Controller
     {
         public IActionResult FeverCheck()
         {

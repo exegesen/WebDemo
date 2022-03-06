@@ -1,15 +1,37 @@
-﻿@{
+﻿
+@using Microsoft.AspNetCore.Http
+@model WebDemo.Models.GuessGameFormData
+@{
     ViewData["Title"] = "Index";
 }
 
 <html>  
 <head>  
     <meta name="viewport" content="width=device-width" />  
-    <title>About</title>  
+    <title>Number Guessing game</title>  
 </head>  
 <body>  
     <div>  
     <h1>Number Guessing Game</h1>
+    @using(Html.BeginForm("GuessGame","NumberGuess",FormMethod.Post))
+     {
+        <table>
+            <tr>
+                <td>Enter your guess</td>
+                <td>@Html.TextBox("numberInput")</td>
+            </tr>
+            <tr>
+                <td colspan:"1"><input type="submit" "Submit"></td>
+            </tr>
+
+        </table>
+     }
+        <h4 style="color:blue">
+            Number to guess: @Context.Session.GetInt32("_Number");
+            
+            
+
+        </h4>
     </div>  
 </body>  
 </html>  
