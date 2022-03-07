@@ -9,12 +9,24 @@
   <tr>
     <th>@Model.Col0</th>
     <th>@Model.Col1</th>
+    <th>@Model.Col2</th>
+    
   </tr>
   @foreach (var x in Model.personList)
   {
       <tr>
         <td>@x.Name</td>
-        <td>Remove</td>
+         <td>@x.City</td>
+        <td>
+                    @using (Html.BeginForm("People", "PeopleList", FormMethod.Post))
+                    {
+
+                        <td colspan:"1"><input type="submit" value="Remove"></td>
+
+                    }
+                    
+            
+        </td>
       </tr>
   }
 </table>

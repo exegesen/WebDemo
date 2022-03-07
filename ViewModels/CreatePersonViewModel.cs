@@ -9,6 +9,7 @@ namespace WebDemo.ViewModels
     {
         public string Col0 { get; set; }
         public string Col1 { get; set; }
+        public string Col2 { get; set; }
         public string Title { get; set; }
         public List<Person> personList { get; set; }
         public void AddPerson(Person p) {
@@ -22,6 +23,12 @@ namespace WebDemo.ViewModels
         public void RemovePerson(Person p) {
 
             personList.Remove(p);
+
+        }
+        public void RemovePerson(int id)
+        {
+
+            personList.RemoveAt(id);
 
         }
         public Person GetPerson(int id) { 
