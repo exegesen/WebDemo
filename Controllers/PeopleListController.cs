@@ -1,13 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Text.Json;
 using WebDemo.Models;
 using WebDemo.ViewModels;
+
 namespace WebDemo.Controllers
 {
+    
     public class PeopleList : Controller
     {
+        
         CreatePersonViewModel createPersonViewModel;
         PersonList personList;
+        public const string createPersonViewModelSession = "_createPersonViewModelSessionKey";
         /*
         public PeopleList(CreatePersonViewModel createPersonViewModel)
         {
@@ -64,18 +70,22 @@ namespace WebDemo.Controllers
             createPersonViewModel.Title = "Title";
 
             
-
             //Pass the viewModel to the view
             return View(createPersonViewModel);
         }
 
-        
+          
         [HttpPost]
-        public ViewResult People(CreatePersonViewModel createPersonViewModel, int personId)
+        public IActionResult People([FromForm] CreatePersonViewModel createPersonViewModel)
         {
-            createPersonViewModel.People.PList.RemoveAt(personId);
+            createPersonViewModel.People.PList.RemoveAt(createPersonViewModel.PersonId);
             return View(createPersonViewModel);
         }
 
+        
+
+
+
     }
+
 }

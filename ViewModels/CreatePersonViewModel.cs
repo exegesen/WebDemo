@@ -11,7 +11,7 @@ namespace WebDemo.ViewModels
         public string Col1 { get; set; }
         public string Col2 { get; set; }
         public string Title { get; set; }
-
+        public int PersonId { get; set; }
         public PersonList People { get; set; }
         
     }

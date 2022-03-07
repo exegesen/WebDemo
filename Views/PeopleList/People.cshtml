@@ -20,6 +20,17 @@
         <td>
                     @using (Html.BeginForm("People", "PeopleList", new { personId = x.Id},FormMethod.Post))
                     {
+                        @Html.Hidden("Col0",Model.Col0)
+                        @Html.Hidden("Col1",Model.Col1)
+                        @Html.Hidden("Col2",Model.Col2)
+                        @Html.Hidden("Title",Model.Title)
+                        @for(int i = 0; i < Model.People.PList.Count; i++)
+                        {
+                            @Html.HiddenFor(model => Model.People.PList[i].City)
+                            @Html.HiddenFor(model => Model.People.PList[i].Id)
+                            @Html.HiddenFor(model => Model.People.PList[i].Name)
+                        }
+                      
                         <td colspan:"1"><input type="submit" value="Remove"></td>
                     }
                     
