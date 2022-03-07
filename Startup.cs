@@ -65,13 +65,13 @@ namespace WebDemo
                    );
                 endpoints.MapControllerRoute(
                     name: "peopleDefault",
-                    pattern: "{controller=PeopleListController}/{action=People}/{id?}",
-                    defaults: new { controller = "PeopleListController", action = "People" }
+                    pattern: "{controller=PeopleList}/{action=People}/{id?}",
+                    defaults: new { controller = "PeopleList", action = "People" }
                     );
                 endpoints.MapControllerRoute(
                     name: "people",
                     pattern: "People",
-                    defaults: new { controller = "PeopleListController", action = "People" }
+                    defaults: new { controller = "PeopleList", action = "People" }
                     );
 
 

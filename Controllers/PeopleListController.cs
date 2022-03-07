@@ -3,7 +3,7 @@ using WebDemo.Models;
 using WebDemo.ViewModels;
 namespace WebDemo.Controllers
 {
-    public class PeopleListController : Controller
+    public class PeopleList : Controller
     {
         
         public ViewResult People()

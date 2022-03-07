@@ -12,7 +12,10 @@ namespace WebDemo.ViewModels
         public string Title { get; set; }
         public List<Person> personList { get; set; }
         public void AddPerson(Person p) {
-            
+
+            if (personList == null) { 
+                personList = new List<Person>();
+            }
             personList.Add(p);
 
         }
