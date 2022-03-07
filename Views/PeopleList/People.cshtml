@@ -12,17 +12,15 @@
     <th>@Model.Col2</th>
     
   </tr>
-  @foreach (var x in Model.personList)
+  @foreach (var x in Model.People.PList)
   {
       <tr>
         <td>@x.Name</td>
          <td>@x.City</td>
         <td>
-                    @using (Html.BeginForm("People", "PeopleList", FormMethod.Post))
+                    @using (Html.BeginForm("People", "PeopleList", new { personId = x.Id},FormMethod.Post))
                     {
-
                         <td colspan:"1"><input type="submit" value="Remove"></td>
-
                     }
                     
             
