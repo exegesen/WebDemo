@@ -12,6 +12,9 @@ namespace WebDemo.ViewModels
         public string Col2 { get; set; }
         public string Title { get; set; }
         public int PersonId { get; set; }
+        public string Add { get; set; }
+        public string Filter { get; set; }
+        public string City { get; set; }
         public PersonList People { get; set; }
         
     }

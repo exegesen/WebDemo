@@ -73,7 +73,16 @@ namespace WebDemo
                     pattern: "People",
                     defaults: new { controller = "PeopleList", action = "People" }
                     );
-
+                endpoints.MapControllerRoute(
+                    name: "peopleAdd",
+                    pattern: "Add",
+                    defaults: new { controller = "PeopleList", action = "People" }
+                    );
+                endpoints.MapControllerRoute(
+                    name: "peopleFilter",
+                    pattern: "Filter",
+                    defaults: new { controller = "PeopleList", action = "People" }
+                    );
 
             });
 

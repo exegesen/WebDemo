@@ -31,25 +31,25 @@ namespace WebDemo.Controllers
             Person p0 = new Person()
             {
                 Name = "Dillip",
-                Id = 0,
+                Id = Person.Counter(),
                 City = "Georgestown",
             };
             Person p1 = new Person()
             {
                 Name = "Anton",
-                Id = 1,
+                Id = Person.Counter(),
                 City = "Malmö",
             };
             Person p2 = new Person()
             {
                 Name = "Peter",
-                Id = 2,
+                Id = Person.Counter(),
                 City = "Foggy Bottom",
             };
             Person p3 = new Person()
             {
                 Name = "Lisa",
-                Id = 3,
+                Id = Person.Counter(),
                 City = "Mexico City",
             };
 
@@ -82,6 +82,30 @@ namespace WebDemo.Controllers
             return View(createPersonViewModel);
         }
 
+        [HttpPost]
+        public IActionResult Filter([FromForm] CreatePersonViewModel createPersonViewModel)
+        {
+            //createPersonViewModel.FilterAdd
+            return View(createPersonViewModel);
+        }
+
+
+        [HttpPost]
+        public IActionResult Add([FromForm] CreatePersonViewModel createPersonViewModel)
+        {
+            Person p = new Person()
+            {
+                Name = createPersonViewModel.Add,
+                Id = Person.Counter(),
+                City = createPersonViewModel.City,
+
+            };
+
+            createPersonViewModel.People.PList.Add((Person)p);
+
+
+            return View(createPersonViewModel);
+        }
         
 
 
