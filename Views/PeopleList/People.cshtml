@@ -31,6 +31,7 @@
                             @Html.HiddenFor(model => Model.People.PList[i].Id)
                             @Html.HiddenFor(model => Model.People.PList[i].Name)
                         }
+                       
                         <td colspan:"1"><input type="submit" value="Remove"></td>
                     }
                     
@@ -53,7 +54,8 @@
              @Html.HiddenFor(model => Model.People.PList[i].Id)
              @Html.HiddenFor(model => Model.People.PList[i].Name)
          }
-         <td >Name to filter:@Html.TextBox("FilterAdd")</td>
+         
+         <td >Name to filter:@Html.TextBox("Filter")</td>
          <td colspan:"1"><input type="submit" value="Filter"></td>
 
      }
@@ -71,7 +73,8 @@
              @Html.HiddenFor(model => Model.People.PList[i].Id)
              @Html.HiddenFor(model => Model.People.PList[i].Name)
          }
-         <td >Name to add:@Html.TextBox("FilterAdd")</td>
+         
+         <td >Name to add:@Html.TextBox("Add")</td>
          <td >City: @Html.TextBox("City")</td>
          <td colspan:"1"><input type="submit" value="Add"></td>
      }

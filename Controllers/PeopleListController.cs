@@ -63,6 +63,7 @@ namespace WebDemo.Controllers
             personList.PList.Add(p3);
 
             createPersonViewModel.People = personList;
+            //createPersonViewModel.WholeListPeople = personList;
 
             createPersonViewModel.Col0 = "Name";
             createPersonViewModel.Col2 = "Remove";
@@ -85,8 +86,15 @@ namespace WebDemo.Controllers
         [HttpPost]
         public IActionResult Filter([FromForm] CreatePersonViewModel createPersonViewModel)
         {
-            //createPersonViewModel.FilterAdd
-            return View(createPersonViewModel);
+            List<Person> personList = new List<Person>();
+            foreach( Person p in createPersonViewModel.People.PList) {
+                if (p.Name == createPersonViewModel.Filter || p.City == createPersonViewModel.Filter) { 
+                    personList.Add(p);
+                }
+                
+            }
+            createPersonViewModel.People.PList = personList;
+            return View("People", createPersonViewModel);
         }
 
 
@@ -104,7 +112,7 @@ namespace WebDemo.Controllers
             createPersonViewModel.People.PList.Add((Person)p);
 
 
-            return View(createPersonViewModel);
+            return View("People", createPersonViewModel);
         }
         
 
