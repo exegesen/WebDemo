@@ -1,0 +1,23 @@
+﻿@model WebDemo.ViewModels.CreatePersonViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@Model.Title</title>
+</head>
+<body>
+
+<table>
+  <tr>
+    <th>@Model.Col0</th>
+    <th>@Model.Col1</th>
+  </tr>
+  @foreach (var x in Model.personList)
+  {
+      <tr>
+        <td>@x.Name</td>
+        <td>Remove</td>
+      </tr>
+  }
+</table>
+
+</body>
+</html>

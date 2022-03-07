@@ -54,11 +54,25 @@ namespace WebDemo
                 endpoints.MapControllerRoute(
                     name: "number",
                     pattern: "GuessingGame",
-                   // defaults: "{controller=NumberGuess}/{action=Index}/{id?}"
+                   
                    defaults: new { controller = "NumberGuess", action = "index" }
-
                    );
-
+                endpoints.MapControllerRoute(
+                    name: "student",
+                    pattern: "/Student/Details",
+                   
+                   defaults: new { controller = "StudentController", action = "Details" }
+                   );
+                endpoints.MapControllerRoute(
+                    name: "peopleDefault",
+                    pattern: "{controller=PeopleListController}/{action=People}/{id?}",
+                    defaults: new { controller = "PeopleListController", action = "People" }
+                    );
+                endpoints.MapControllerRoute(
+                    name: "people",
+                    pattern: "People",
+                    defaults: new { controller = "PeopleListController", action = "People" }
+                    );
 
 
             });
