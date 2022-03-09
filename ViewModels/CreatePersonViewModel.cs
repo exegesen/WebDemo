@@ -15,7 +15,7 @@ namespace WebDemo.ViewModels
         public string Add { get; set; }
         public string Filter { get; set; }
         public string City { get; set; }
-        public PersonList People { get; set; }
+        public PersonList PersonList { get; set; }
         //public PersonList WholeListPeople { get; set; }
 
     }

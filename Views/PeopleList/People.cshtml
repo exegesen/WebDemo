@@ -2,44 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>@Model.Title</title>
+    <style>
+        .container {
+        display: flex; /* or inline-flex */
+            }
+    </style>
 </head>
 <body>
 
-<table>
+<div class="container">
 
-  <tr>
-    <th>@Model.Col0</th>
-    <th>@Model.Col1</th>
-    <th>@Model.Col2</th>
-    
-  </tr>
-  @foreach (var x in Model.People.PList){
-      <table>
-      <tr>
-        <td>@x.Name</td>
-         <td>@x.City</td>
-        <td>
-                    @using (Html.BeginForm("People", "PeopleList", new { personId = x.Id},FormMethod.Post))
-                    {
-                        @Html.Hidden("Col0",Model.Col0)
-                        @Html.Hidden("Col1",Model.Col1)
-                        @Html.Hidden("Col2",Model.Col2)
-                        @Html.Hidden("Title",Model.Title)
-                        @for(int i = 0; i < Model.People.PList.Count; i++)
-                        {
-                            @Html.HiddenFor(model => Model.People.PList[i].City)
-                            @Html.HiddenFor(model => Model.People.PList[i].Id)
-                            @Html.HiddenFor(model => Model.People.PList[i].Name)
-                        }
-                       
-                        <td colspan:"1"><input type="submit" value="Remove"></td>
-                    }
-                    
-            
-        </td>
-      </tr>
-      </table>
- }
+  <div class="row">
+    <div class="col-sm">@Model.Col0</div>
+    <div class="col-sm">@Model.Col1</div>
+    <div class="col-sm">@Model.Col2</div>
+  </div>
+  
+  @foreach (var x in Model.PersonList.PList){
+   ViewData["xCity"] = x.City;
+   ViewData["xName"] = x.Name;
+   ViewData["Col0"] = Model.Col0;
+   ViewData["Col1"] = Model.Col1;
+   ViewData["Col2"] = Model.Col2;
+   ViewData["Title"] = Model.Title;
+   ViewData["xID"] = x.Id;
+   ViewData["listSize"] = Model.PersonList.PList.Count;
+   ViewData["PList"] = Model.PersonList.PList;
+            <partial name="Partial.cshtml" for="PersonList" view-data="ViewData" ><></partial>
+  }
+ </div>
+
  <table>
      <tr>
      @using (Html.BeginForm("Filter", "PeopleList",FormMethod.Post))
@@ -48,11 +40,11 @@
          @Html.Hidden("Col1",Model.Col1)
          @Html.Hidden("Col2",Model.Col2)
          @Html.Hidden("Title",Model.Title)
-         @for(int i = 0; i < Model.People.PList.Count; i++)
+         @for(int i = 0; i < Model.PersonList.PList.Count; i++)
          {
-             @Html.HiddenFor(model => Model.People.PList[i].City)
-             @Html.HiddenFor(model => Model.People.PList[i].Id)
-             @Html.HiddenFor(model => Model.People.PList[i].Name)
+             @Html.HiddenFor(model => Model.PersonList.PList[i].City)
+             @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
+             @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
          }
          
          <td >Name to filter:@Html.TextBox("Filter")</td>
@@ -67,11 +59,11 @@
          @Html.Hidden("Col1",Model.Col1)
          @Html.Hidden("Col2",Model.Col2)
          @Html.Hidden("Title",Model.Title)
-         @for(int i = 0; i < Model.People.PList.Count; i++)
+         @for(int i = 0; i < Model.PersonList.PList.Count; i++)
          {
-             @Html.HiddenFor(model => Model.People.PList[i].City)
-             @Html.HiddenFor(model => Model.People.PList[i].Id)
-             @Html.HiddenFor(model => Model.People.PList[i].Name)
+             @Html.HiddenFor(model => Model.PersonList.PList[i].City)
+             @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
+             @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
          }
          
          <td >Name to add:@Html.TextBox("Add")</td>
@@ -79,9 +71,6 @@
          <td colspan:"1"><input type="submit" value="Add"></td>
      }
      </tr>
-
-
-
  </table>
 
 
