@@ -17,8 +17,9 @@
     <div class="col-sm">@Model.Col1</div>
     <div class="col-sm">@Model.Col2</div>
   </div>
-  
+  @{var counter = 0;}
   @foreach (var x in Model.PersonList.PList){
+   counter++;
    ViewData["xCity"] = x.City;
    ViewData["xName"] = x.Name;
    ViewData["Col0"] = Model.Col0;
@@ -28,7 +29,8 @@
    ViewData["xID"] = x.Id;
    ViewData["listSize"] = Model.PersonList.PList.Count;
    ViewData["PList"] = Model.PersonList.PList;
-            <partial name="Partial.cshtml" for="PersonList" view-data="ViewData" ><></partial>
+   ViewData["PersonId"] = counter;
+            <partial name="Partial.cshtml" for="PersonList" view-data="ViewData"></partial>
   }
  </div>
 
