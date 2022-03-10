@@ -79,7 +79,7 @@ namespace WebDemo.Controllers
         [HttpPost]
         public IActionResult People([FromForm] CreatePersonViewModel createPersonViewModel)
         {
-            createPersonViewModel.PersonId = (int)ViewData["PersonId"];// can't semm to transfer viewData to action
+            // can't semm to transfer viewData to action
             // can't seem to transfer int to action via hiddenfor
             createPersonViewModel.PersonList.PList.RemoveAt(createPersonViewModel.PersonId);
             return View(createPersonViewModel); // BUG: PersonID is not transfered back to action
