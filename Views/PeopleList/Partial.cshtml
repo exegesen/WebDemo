@@ -15,6 +15,7 @@
             @Html.Hidden("Col2",ViewData["Col2"])
             @Html.Hidden("Title",ViewData["Title"])
             ViewData["PersonId"] = PersonId;
+            @Html.Hidden("PersonId",PersonId)
             @if ((int)PersonId == 3)
             {
                 
