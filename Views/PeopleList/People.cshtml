@@ -19,7 +19,7 @@
   </div>
   @{var counter = 0;}
   @foreach (var x in Model.PersonList.PList){
-   counter++;
+   
    ViewData["xCity"] = x.City;
    ViewData["xName"] = x.Name;
    ViewData["Col0"] = Model.Col0;
@@ -30,8 +30,14 @@
    ViewData["listSize"] = Model.PersonList.PList.Count;
    ViewData["PList"] = Model.PersonList.PList;
    ViewData["PersonId"] = counter;
-            <partial name="Partial.cshtml" for="PersonList" view-data="ViewData"></partial>
+   @Html.Hidden("Col0",Model.Col0)
+   @Html.Hidden("Col1",ViewData["Col1"])
+   @Html.Hidden("Col2",ViewData["Col2"])
+   @Html.Hidden("Title",ViewData["Title"])
+  <partial name="Partial.cshtml" for="PersonList" view-data="ViewData"></partial>
+  counter++;
   }
+  
  </div>
 
  <table>
