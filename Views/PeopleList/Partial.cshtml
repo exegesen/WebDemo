@@ -1,0 +1,33 @@
+﻿@model WebDemo.Models.PersonList
+
+<div class="row">
+    <div class="col-sm">@ViewData["xName"]</div>
+    <div class="col-sm">@ViewData["xCity"]</div> 
+    <div class="col-sm">
+        @using (Html.BeginForm("People", "PeopleList", new { personId = ViewData["xID"]},FormMethod.Post))
+        {
+            var col0 = ViewData["Col0"];
+            var col1 = ViewData["Col1"];
+            var col2 = ViewData["Col2"];
+            var PersonId = ViewData["PersonId"];
+            @Html.Hidden("Col0",col0)
+            @Html.Hidden("Col1",ViewData["Col1"])
+            @Html.Hidden("Col2",ViewData["Col2"])
+            @Html.Hidden("Title",ViewData["Title"])
+            ViewData["PersonId"] = PersonId;
+            @Html.Hidden("PersonId",PersonId)
+            @if ((int)PersonId == 3)
+            {
+                
+            }
+            var PList = ViewData["PList"] as List<WebDemo.Models.Person>;
+                @for(int i = 0; i < (int)ViewData["listSize"]; i++)
+                {
+                    @Html.HiddenFor(model => PList[i].City)
+                    @Html.HiddenFor(model => PList[i].Id)
+                    @Html.HiddenFor(model => PList[i].Name)
+                }
+                <td colspan:"1"><input type="submit" value="Remove"></td>
+            }   
+        </div>
+</div>
