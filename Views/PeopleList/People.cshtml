@@ -11,34 +11,44 @@
 <body>
 
 <div class="container">
+    <div class="row">
+        <div class="col-sm">@Model.Col0</div>
+        <div class="col-sm">@Model.Col1</div>
+        <div class="col-sm">@Model.Col2</div>
+    </div>
+    @{var counter = 0;}
+    @foreach (var person in @Model.PersonList.PList){
+            <form asp-controller="PeopleList" asp-action="People" method="post">
+            <input name="Col0" type="hidden" value=@Model.Col0/>
+            <input name="Col0" type="hidden" value=@Model.Col0/>
+            <input name="Col1" type="hidden" value=@Model.Col1/>
+            <input name="Col2" type="hidden" value=@Model.Col2/>
+            <input name="Title" type="hidden" value=@Model.Title/>
+            <input name="PersonId" asp-for="@Model.PersonId" type="hidden" value=@counter/>
+            
+            @{
+            var PList =  Model.PersonList.PList as List<WebDemo.Models.Person>;
+            <input name="PList" asp-for="@Model.PersonList.PList" type="hidden" value=@PList/>
+            <input name="Person" asp-for="@Model.Person" type="hidden" value=@Model.Person/>
+                @for(int i = 0; (int)i < PList.Count; i++)
+                {
 
-  <div class="row">
-    <div class="col-sm">@Model.Col0</div>
-    <div class="col-sm">@Model.Col1</div>
-    <div class="col-sm">@Model.Col2</div>
-  </div>
-  @{var counter = 0;}
-  @foreach (var x in Model.PersonList.PList){
-   
-   ViewData["xCity"] = x.City;
-   ViewData["xName"] = x.Name;
-   ViewData["Col0"] = Model.Col0;
-   ViewData["Col1"] = Model.Col1;
-   ViewData["Col2"] = Model.Col2;
-   ViewData["Title"] = Model.Title;
-   ViewData["xID"] = x.Id;
-   ViewData["listSize"] = Model.PersonList.PList.Count;
-   ViewData["PList"] = Model.PersonList.PList;
-   ViewData["PersonId"] = counter;
-   @Html.Hidden("Col0",Model.Col0)
-   @Html.Hidden("Col1",ViewData["Col1"])
-   @Html.Hidden("Col2",ViewData["Col2"])
-   @Html.Hidden("Title",ViewData["Title"])
-  <partial name="Partial.cshtml" for="PersonList" view-data="ViewData"></partial>
-  counter++;
-  }
-  
- </div>
+                    @Html.HiddenFor(model => Model.PersonList.PList[i].City)
+                    @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
+                    @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
+
+                    <!--
+                    <input name="Model.PersonList.PList[i].City" asp-for="@Model.PersonList.PList[i].City" type="hidden" value=@PList[i].City/>
+                    <input name="Model.PersonList.PList[i].City" asp-for="@Model.PersonList.PList[i].Id" type="hidden" value=@PList[i].Id/>
+                    <input name="Model.PersonList.PList[i].City" asp-for="@Model.PersonList.PList[i].Name" type="hidden" value=@PList[i].Name/>
+                    -->
+                }
+            }
+            <partial name="Partial.cshtml" model="@person"/>
+        </form>
+        counter++;
+    }
+</div>
 
  <table>
      <tr>

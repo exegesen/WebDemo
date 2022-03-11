@@ -83,6 +83,11 @@ namespace WebDemo
                     pattern: "Filter",
                     defaults: new { controller = "PeopleList", action = "People" }
                     );
+                endpoints.MapControllerRoute(
+                    name: "Ajax",
+                    pattern: "Ajax",
+                    defaults: "{controller=AjaxController}/{action=Index}/{id?}"
+                );
 
             });
 

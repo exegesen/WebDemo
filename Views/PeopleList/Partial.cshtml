@@ -1,25 +1,6 @@
-﻿@model WebDemo.Models.PersonList
-
+﻿@model WebDemo.Models.Person
 <div class="row">
-    <div class="col-sm">@ViewData["xName"]</div>
-    <div class="col-sm">@ViewData["xCity"]</div> 
-    <div class="col-sm">
-        <form asp-controller="PeopleList" asp-action="People" method="post">
-            <input type="submit" value="Remove">
-            <input name="Col0" type="hidden" value=@ViewData["Col0"] />
-            <input name="Col1" type="hidden" value=@ViewData["Col1"] />
-            <input name="Col2" type="hidden" value=@ViewData["Col2"] />
-            <input name="Title" type="hidden" value=@ViewData["Title"] />
-            <input name="PersonId" type="hidden" value=@ViewData["PersonId"] />
-            @{
-            var PList = ViewData["PList"] as List<WebDemo.Models.Person>;
-                @for(int i = 0; i < (int)ViewData["listSize"]; i++)
-                {
-                    @Html.HiddenFor(model => PList[i].City)
-                    @Html.HiddenFor(model => PList[i].Id)
-                    @Html.HiddenFor(model => PList[i].Name)
-                }
-            }
-        </form>
-    </div>
+    <div class="col-sm">@Model.Name</div>
+    <div class="col-sm">@Model.City</div> 
+    <div class="col-sm"><input type="submit" value="Remove"></div> 
 </div>
