@@ -63,7 +63,7 @@ namespace WebDemo.Controllers
             personList.PList.Add(p3);
 
             createPersonViewModel.PersonList = personList;
-            //createPersonViewModel.WholeListPeople = personList;
+       
 
             createPersonViewModel.Col0 = "Name";
             createPersonViewModel.Col2 = "Remove";
@@ -79,10 +79,16 @@ namespace WebDemo.Controllers
         [HttpPost]
         public IActionResult People([FromForm] CreatePersonViewModel createPersonViewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("InvalidModelState.cshtml");
+            }
+            
             // can't semm to transfer viewData to action
             // can't seem to transfer int to action via hiddenfor
             createPersonViewModel.PersonList.PList.RemoveAt(createPersonViewModel.PersonId);
             return View(createPersonViewModel); // BUG: PersonID is not transfered back to action
+
         }
 
         [HttpPost]
