@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using WebDemo.Models;
 using WebDemo.ViewModels;
 namespace WebDemo.Models
@@ -10,8 +11,11 @@ namespace WebDemo.Models
             counter++;
             return counter;
         }
+        [Required]
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string City { get; set; }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model WebDemo.Models.PersonList 
+<div class="container">
+    <div class="row">
+        <div class="col-sm">Name</div>
+        <div class="col-sm">City</div>
+        <div class="col-sm">Id</div>
+    </div>
+    @foreach (var person in @Model.PList) 
+    { 
+        <div>
+        <partial name="PersonPartial.cshtml" model="@person"/>
+        </div>
+    }
+</div>

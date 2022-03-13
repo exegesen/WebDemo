@@ -32,16 +32,9 @@
             <input name="Person" asp-for="@Model.Person" type="hidden" value=@Model.Person/>
                 @for(int i = 0; (int)i < PList.Count; i++)
                 {
-
                     @Html.HiddenFor(model => Model.PersonList.PList[i].City)
                     @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
                     @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
-
-                    <!--
-                    <input name="Model.PersonList.PList[i].City" asp-for="@Model.PersonList.PList[i].City" type="hidden" value=@PList[i].City/>
-                    <input name="Model.PersonList.PList[i].City" asp-for="@Model.PersonList.PList[i].Id" type="hidden" value=@PList[i].Id/>
-                    <input name="Model.PersonList.PList[i].City" asp-for="@Model.PersonList.PList[i].Name" type="hidden" value=@PList[i].Name/>
-                    -->
                 }
             }
             <partial name="Partial.cshtml" model="@person"/>

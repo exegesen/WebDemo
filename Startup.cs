@@ -84,10 +84,10 @@ namespace WebDemo
                     defaults: new { controller = "PeopleList", action = "People" }
                     );
                 endpoints.MapControllerRoute(
-                    name: "Ajax",
+                    name: "ajax",
                     pattern: "Ajax",
-                    defaults: "{controller=AjaxController}/{action=Index}/{id?}"
-                );
+                    defaults: new { controller = "AjaxController", action = "Index" }
+                    );
 
             });
 
