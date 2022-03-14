@@ -24,47 +24,36 @@ namespace WebDemo.Controllers
         [HttpGet]
         public ActionResult PeopleButton()
         {
-
-            
-
-            Person p0 = new Person()
-            {
-                Name = "Dillip",
-                Id = Person.Counter(),
-                City = "Georgestown",
-            };
-            Person p1 = new Person()
-            {
-                Name = "Anton",
-                Id = Person.Counter(),
-                City = "Malmö",
-            };
-            Person p2 = new Person()
-            {
-                Name = "Peter",
-                Id = Person.Counter(),
-                City = "Foggy Bottom",
-            };
-            Person p3 = new Person()
-            {
-                Name = "Lisa",
-                Id = Person.Counter(),
-                City = "Mexico City",
-            };
-            pl.PList.Add(p0);
-            pl.PList.Add(p1);
-            pl.PList.Add(p2);
-            pl.PList.Add(p3);
+            pl.PList = PersonList.defaultList();
             return PartialView("PeopleListPartial", pl);
         }
-        public JsonResult DetailsButton()
+        public ActionResult DetailsButton(int? id)
         {
-            return Json("My String", JsonRequestBehavior.AllowGet);
+            PersonList pl = new PersonList()
+            {
+                PList = PersonList.defaultList()
+            };
+            PersonList pl0 = new PersonList()
+            {
+                PList = new List<Person>()
+            };
+            foreach (Person person in pl.PList)
+            {
+                if (person.Id == id) { 
+                    pl0.PList.Add(person);
+                }
+
+            }
+
+            return PartialView("PeopleListPartial", pl0);
         }
 
-        public JsonResult DeleteButton()
+        public ActionResult DeleteButton(int? id)
         {
-            return Json("My String", JsonRequestBehavior.AllowGet);
+
+
+
+            return StatusCode(404);
         }
 
     }

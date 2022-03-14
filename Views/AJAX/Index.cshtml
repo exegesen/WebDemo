@@ -3,67 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-<html>  
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <style>
-        .container {
-        display: flex; /* or inline-flex */
-            }
-    </style>
-    
+    <button id="people" onclick="getPeopleList()">People</button>
 
-
-
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous">
-    </script>
-    <script type="text/javascript">  
-        $(document).ready(function () {
-            $("#people").click(function () {
-                $.ajax({
-                    url: '@Url.Action("PeopleButton", "Ajax")',
-                    dataType: 'html',
-                    data: "",
-                    type: "GET",
-                    contentType: "application/json",
-                    success: function (response) {
-                        console.warn(response)
-                        $('#peopleDiv').html(response);
-                    },
-                    error: function (xhr, ajaxOptions, thrownError){
-                        alert(xhr.status);
-                        alert(thrownError);
-                        console.warn(xhr.responseText)
-                    }
-                });
-            });
-            $("#details").click(function () {
-                
-            });
-            $("#delete").click(function () {
-                
-            });
-        });
-    </script>
-    <title>SPA</title></head>
-
-<body>
-    
-    
-    <button id="people">People</button>
-    <button id="details">Details</button>
+    <button id="details"  onclick="getPersonByID()">Details</button>
     <input type="text" id="detailsInput" placeholder="Type personId to filter here" />
 
-    <button id="delete">Delete</button>
+    <button id="delete" onclick="deleteCarByID()">Delete</button>
     <input type="text" id="deleteInput" placeholder="Type personId to delete here" />
 
     <div>
     <div id="peopleDiv"/>
     </div>
-
-    
-</body>  
-</html>

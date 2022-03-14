@@ -11,6 +11,47 @@ namespace WebDemo.Models
     {
         [Required]
         public List<Person> PList { get; set; }
+
+        public static List<Person> defaultList()
+        {
+            Person.ResetCounter();
+            Person p0 = new Person()
+            {
+                Name = "Dillip",
+                Id = Person.Counter(),
+                City = "Georgestown",
+            };
+            Person p1 = new Person()
+            {
+                Name = "Anton",
+                Id = Person.Counter(),
+                City = "Malmö",
+            };
+            Person p2 = new Person()
+            {
+                Name = "Peter",
+                Id = Person.Counter(),
+                City = "Foggy Bottom",
+            };
+            Person p3 = new Person()
+            {
+                Name = "Lisa",
+                Id = Person.Counter(),
+                City = "Mexico City",
+            };
+
+
+            //Creating the View model
+            PersonList personList = new PersonList();
+            
+            personList.PList = new List<Person>();
+            personList.PList.Add(p0);
+            personList.PList.Add(p1);
+            personList.PList.Add(p2);
+            personList.PList.Add(p3);
+
+            return personList.PList;
+        }
     }
     public static class JsonExtensions
     {

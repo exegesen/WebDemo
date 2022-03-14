@@ -11,6 +11,10 @@ namespace WebDemo.Models
             counter++;
             return counter;
         }
+        public static void ResetCounter()
+        {
+            counter = 0;
+        }
         [Required]
         public int Id { get; set; }
         [Required]
