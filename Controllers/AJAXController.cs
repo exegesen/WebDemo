@@ -50,10 +50,23 @@ namespace WebDemo.Controllers
 
         public ActionResult DeleteButton(int? id)
         {
+            PersonList pl = new PersonList()
+            {
+                PList = PersonList.defaultList()
+            };
+            PersonList pl0 = new PersonList()
+            {
+                PList = new List<Person>()
+            };
+            foreach (Person person in pl.PList)
+            {
+                if (person.Id != id)
+                {
+                    pl0.PList.Add(person);
+                }
 
-
-
-            return StatusCode(404);
+            }
+            return PartialView("PeopleListPartial", pl0);
         }
 
     }

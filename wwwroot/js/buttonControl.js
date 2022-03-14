@@ -15,13 +15,15 @@ function getPersonByID() {
 function deleteCarByID() {
     var IDValue = document.getElementById('deleteInput').value;
     $.post("/Ajax/DeleteButton", { id: IDValue }, function (response) {
+        $('#peopleDiv').html(response);
     })
         .done(function () {
             console.warn("Delete succesful");
-            getPeopleList();
+            
         })
         .fail(function () {
             console.warn("Delete error, failed!");
         });
+   
 
 }
