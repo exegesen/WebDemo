@@ -56,11 +56,11 @@ namespace WebDemo.Controllers
 
             //Creating the View model
             personList = new PersonList();
-            personList.PList = new List<Person>();
-            personList.PList.Add(p0);
-            personList.PList.Add(p1);
-            personList.PList.Add(p2);
-            personList.PList.Add(p3);
+            PersonList.PList = new List<Person>();
+            PersonList.PList.Add(p0);
+            PersonList.PList.Add(p1);
+            PersonList.PList.Add(p2);
+            PersonList.PList.Add(p3);
 
             createPersonViewModel.PersonList = personList;
        
@@ -83,10 +83,11 @@ namespace WebDemo.Controllers
             {
                 return View("InvalidModelState.cshtml");
             }
-            
+
             // can't semm to transfer viewData to action
             // can't seem to transfer int to action via hiddenfor
-            createPersonViewModel.PersonList.PList.RemoveAt(createPersonViewModel.PersonId);
+            
+            PersonList.PList.RemoveAt(createPersonViewModel.PersonId);
             return View(createPersonViewModel); // BUG: PersonID is not transfered back to action
 
         }
@@ -95,13 +96,13 @@ namespace WebDemo.Controllers
         public IActionResult Filter([FromForm] CreatePersonViewModel createPersonViewModel)
         {
             List<Person> personList = new List<Person>();
-            foreach( Person p in createPersonViewModel.PersonList.PList) {
+            foreach( Person p in PersonList.PList) {
                 if (p.Name == createPersonViewModel.Filter || p.City == createPersonViewModel.Filter) { 
                     personList.Add(p);
                 }
                 
             }
-            createPersonViewModel.PersonList.PList = personList;
+            PersonList.PList = personList;
             return View("People", createPersonViewModel);
         }
 
@@ -117,7 +118,7 @@ namespace WebDemo.Controllers
 
             };
 
-            createPersonViewModel.PersonList.PList.Add((Person)p);
+            PersonList.PList.Add((Person)p);
 
 
             return View("People", createPersonViewModel);

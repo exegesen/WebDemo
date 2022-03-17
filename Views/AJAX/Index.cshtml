@@ -1,12 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Http
+@model WebDemo.Models.PersonList
 @{
     ViewData["Title"] = "Index";
 }
+    <button id="people" onclick="getPeopleList()">People</button>
 
-<html>  
-<head>  
-    <meta name="viewport" content="width=device-width" />  
-    <title>SPA</title></head>  
-<body>   
-</body>  
-</html>
+    <button id="details"  onclick="getPersonByID()">Details</button>
+    <input type="text" id="detailsInput" placeholder="Type personId to filter here" />
+
+    <button id="delete" onclick="deleteCarByID()">Delete</button>
+    <input type="text" id="deleteInput" placeholder="Type personId to delete here" />
+
+    <div>
+    <div id="peopleDiv"/>
+    </div>

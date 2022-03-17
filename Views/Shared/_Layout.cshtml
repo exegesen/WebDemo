@@ -4,7 +4,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta charset="utf-8" />
 		<title>@ViewBag.Title</title>
-		
+		<link rel="stylesheet" href="~/css/site.css" />
 	</head>
 	<body>
 		<header>
@@ -58,9 +58,19 @@
             controllerName: "PeopleList",
             routeValues: new { Identity = 2577 },
             htmlAttributes: null)
+        @Html.ActionLink(
+            linkText: "Ajax",
+            actionName: "Index",
+            controllerName: "Ajax",
+            routeValues: new { Identity = 2577 },
+            htmlAttributes: null)
 	
 		</header>
-
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+        </script>
 		<div class:"renderBodyDiv">
 			@RenderBody()
 		</div>
@@ -71,6 +81,12 @@
 			
 		</div>
 		</footer>
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+        </script>
+        <script src="~/js/buttonControl.js"></script>
 
 	</body>
 
