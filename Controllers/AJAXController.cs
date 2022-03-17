@@ -16,11 +16,13 @@ namespace WebDemo.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            PersonList.defaultList();
             return View();
         }
         [HttpGet]
         public ActionResult PeopleButton()
         {
+            PersonList.defaultList();
             return PartialView("PeopleListPartial", new PersonList());
         }
         public ActionResult DetailsButton(int? id)
@@ -36,22 +38,24 @@ namespace WebDemo.Controllers
                 }
 
             }
-            
+            PersonList.PList = pl0.PListDynamic;
 
-            return PartialView("PeopleListPartial", pl0);
+            return PartialView("PeopleListPartial", new PersonList());
         }
 
         public ActionResult DeleteButton(int? id)
         {
+            List<Person> pl0 = new List<Person>();
             foreach (Person person in PersonList.PList)
             {
-                if (person.Id == id)
+                if (person.Id != id)
                 {
-                    PersonList.PList.Remove(person);
+                    pl0.Add(person);
                 }
 
             }
-            return PartialView("PeopleListPartial", PersonList.PList);
+            PersonList.PList = pl0;
+            return PartialView("PeopleListPartial", new PersonList());
         }
 
     }
