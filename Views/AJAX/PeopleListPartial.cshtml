@@ -5,7 +5,7 @@
         <div class="col-sm">City</div>
         <div class="col-sm">Id</div>
     </div>
-    @foreach (var person in @Model.PList) 
+    @foreach (var person in @WebDemo.Models.PersonList.PList) 
     { 
         <div>
         <partial name="PersonPartial.cshtml" model="@person"/>

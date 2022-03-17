@@ -12,10 +12,7 @@ namespace WebDemo.Controllers
 {
     public class AjaxController : Controller
     {
-        public PersonList pl = new PersonList()
-        {
-            PList = new List<Person>()
-        };
+        
         [HttpGet]
         public ActionResult Index()
         {
@@ -24,49 +21,37 @@ namespace WebDemo.Controllers
         [HttpGet]
         public ActionResult PeopleButton()
         {
-            pl.PList = PersonList.defaultList();
-            return PartialView("PeopleListPartial", pl);
+            return PartialView("PeopleListPartial", new PersonList());
         }
         public ActionResult DetailsButton(int? id)
         {
-            PersonList pl = new PersonList()
-            {
-                PList = PersonList.defaultList()
-            };
-            PersonList pl0 = new PersonList()
-            {
-                PList = new List<Person>()
-            };
-            foreach (Person person in pl.PList)
+
+            PersonList pl0 = new PersonList();
+            pl0.PListDynamic = new List<Person>();
+            
+            foreach (Person person in PersonList.PList)
             {
                 if (person.Id == id) { 
-                    pl0.PList.Add(person);
+                    pl0.PListDynamic.Add(person);
                 }
 
             }
+            
 
             return PartialView("PeopleListPartial", pl0);
         }
 
         public ActionResult DeleteButton(int? id)
         {
-            PersonList pl = new PersonList()
+            foreach (Person person in PersonList.PList)
             {
-                PList = PersonList.defaultList()
-            };
-            PersonList pl0 = new PersonList()
-            {
-                PList = new List<Person>()
-            };
-            foreach (Person person in pl.PList)
-            {
-                if (person.Id != id)
+                if (person.Id == id)
                 {
-                    pl0.PList.Add(person);
+                    PersonList.PList.Remove(person);
                 }
 
             }
-            return PartialView("PeopleListPartial", pl0);
+            return PartialView("PeopleListPartial", PersonList.PList);
         }
 
     }

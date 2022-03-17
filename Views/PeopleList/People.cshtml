@@ -1,10 +1,5 @@
 ﻿@model WebDemo.ViewModels.CreatePersonViewModel
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>@Model.Title</title>
-</head>
-<body>
-
+<div>
 <div class="container">
     <div class="row">
         <div class="col-sm">@Model.Col0</div>
@@ -12,7 +7,7 @@
         <div class="col-sm">@Model.Col2</div>
     </div>
     @{var counter = 0;}
-    @foreach (var person in @Model.PersonList.PList){
+    @foreach (var person in @WebDemo.Models.PersonList.PList){
             <form asp-controller="PeopleList" asp-action="People" method="post">
             <input name="Col0" type="hidden" value=@Model.Col0/>
             <input name="Col0" type="hidden" value=@Model.Col0/>
@@ -21,15 +16,15 @@
             <input name="Title" type="hidden" value=@Model.Title/>
             <input name="PersonId" asp-for="@Model.PersonId" type="hidden" value=@counter/>
             
-            @{
-            var PList =  Model.PersonList.PList as List<WebDemo.Models.Person>;
-            <input name="PList" asp-for="@Model.PersonList.PList" type="hidden" value=@PList/>
+                @{
+                    var PList = @WebDemo.Models.PersonList.PList;
+                    <input name="PList" asp-for="@WebDemo.Models.PersonList.PList" type="hidden" value=@PList/>
             <input name="Person" asp-for="@Model.Person" type="hidden" value=@Model.Person/>
                 @for(int i = 0; (int)i < PList.Count; i++)
                 {
-                    @Html.HiddenFor(model => Model.PersonList.PList[i].City)
-                    @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
-                    @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
+                    @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].City)
+                    @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].Id)
+                    @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].Name)
                 }
             }
             <partial name="Partial.cshtml" model="@person"/>
@@ -40,17 +35,19 @@
 
  <table>
      <tr>
+         
      @using (Html.BeginForm("Filter", "PeopleList",FormMethod.Post))
      {
          @Html.Hidden("Col0",Model.Col0)
          @Html.Hidden("Col1",Model.Col1)
          @Html.Hidden("Col2",Model.Col2)
          @Html.Hidden("Title",Model.Title)
-         @for(int i = 0; i < Model.PersonList.PList.Count; i++)
+         @WebDemo.Models.PersonList.PList
+         @for(int i = 0; i < @WebDemo.Models.PersonList.PList.Count; i++)
          {
-             @Html.HiddenFor(model => Model.PersonList.PList[i].City)
-             @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
-             @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
+             @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].City)
+             @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].Id)
+             @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].Name)
          }
          
          <td >Name to filter:@Html.TextBox("Filter")</td>
@@ -65,11 +62,11 @@
          @Html.Hidden("Col1",Model.Col1)
          @Html.Hidden("Col2",Model.Col2)
          @Html.Hidden("Title",Model.Title)
-         @for(int i = 0; i < Model.PersonList.PList.Count; i++)
+         @for(int i = 0; i < @WebDemo.Models.PersonList.PList.Count; i++)
          {
-             @Html.HiddenFor(model => Model.PersonList.PList[i].City)
-             @Html.HiddenFor(model => Model.PersonList.PList[i].Id)
-             @Html.HiddenFor(model => Model.PersonList.PList[i].Name)
+             @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].City)
+             @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].Id)
+             @Html.HiddenFor(model => @WebDemo.Models.PersonList.PList[i].Name)
          }
          
          <td >Name to add:@Html.TextBox("Add")</td>
@@ -78,8 +75,4 @@
      }
      </tr>
  </table>
-
-
-
-</body>
-</html>
+ </div>

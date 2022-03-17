@@ -10,8 +10,13 @@ namespace WebDemo.Models
     public class PersonList
     {
         [Required]
-        public List<Person> PList { get; set; }
+        public static List<Person> PList { get; set; }
 
+        public List<Person> PListDynamic { get; set; }
+
+        public static List<Person> GetPList(){
+            return PList;
+        }
         public static List<Person> defaultList()
         {
             Person.ResetCounter();
@@ -44,13 +49,13 @@ namespace WebDemo.Models
             //Creating the View model
             PersonList personList = new PersonList();
             
-            personList.PList = new List<Person>();
-            personList.PList.Add(p0);
-            personList.PList.Add(p1);
-            personList.PList.Add(p2);
-            personList.PList.Add(p3);
+            PersonList.PList = new List<Person>();
+            PersonList.PList.Add(p0);
+            PersonList.PList.Add(p1);
+            PersonList.PList.Add(p2);
+            PersonList.PList.Add(p3);
 
-            return personList.PList;
+            return PersonList.PList;
         }
     }
     public static class JsonExtensions

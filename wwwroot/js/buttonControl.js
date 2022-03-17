@@ -1,5 +1,6 @@
 ﻿function getPeopleList() {
     $.get("/Ajax/PeopleButton", null, function (response) {
+        console.warn("response");
         $('#peopleDiv').html(response);
     });
 }
